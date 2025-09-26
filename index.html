@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WISELIZARDS STUDIO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="icon" type="image/x-icon" href="./content/favicon.ico" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Custom styles for the website */
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #f9fff8; /* Slightly off-white */
+        color: #1a2e1c; /* Dark green text */
+        overflow-x: hidden;
+      }
+
+      /* Custom cursor styling */
+      .cursor {
+        width: 30px;
+        height: 30px;
+        border: 2px solid #36d399; /* Bright green */
+        border-radius: 50%;
+        position: fixed;
+        pointer-events: none;
+        z-index: 9999;
+        transform: translate(-50%, -50%);
+        transition: width 0.2s ease, height 0.2s ease, border-width 0.2s ease,
+          background-color 0.2s ease, backdrop-filter 0.2s ease;
+      }
+
+      .cursor.hovered {
+        width: 50px;
+        height: 50px;
+        background-color: rgba(54, 211, 153, 0.2);
+        border-width: 3px;
+        backdrop-filter: blur(2px);
+      }
+
+      /* Custom animated gradient for titles */
+      .animated-gradient-text {
+        background: linear-gradient(90deg, #10b981, #36d399, #a7f3d0, #10b981);
+        background-size: 200% 200%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: gradient-animation 5s ease infinite;
+      }
+
+      @keyframes gradient-animation {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      /* Scroll-triggered animation classes */
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      }
+
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Hero canvas for background effects */
+      #hero-canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+      }
+
+      /* Ensure header content is above the canvas */
+      main {
+        position: relative;
+        z-index: 2;
+      }
+
+      /* Sticky header style */
+      header {
+        transition: background-color 0.3s ease-in-out,
+          box-shadow 0.3s ease-in-out;
+        position: fixed;
+        width: 100%;
+      }
+
+      header.scrolled {
+        background-color: rgba(249, 255, 248, 0.8);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      }
+
+      /* 3D Card effect */
+      .card-3d-effect {
+        transform-style: preserve-3d;
+        transition: transform 0.5s ease;
+      }
+
+      /* Mobile Nav */
+      #mobile-nav {
+        transition: transform 0.3s ease-in-out;
+      }
+    </style>
+  </head>
+  <body class="antialiased">
+    <!-- Custom Cursor -->
+    <div class="cursor hidden md:block"></div>
+
+    <!-- Header Section -->
+    <header id="main-header" class="top-0 left-0 right-0 p-6 md:p-8 z-50">
+      <div class="container mx-auto flex justify-between items-center">
+        <div class="flex items-center">
+          <!-- Using your provided logo -->
+          <img
+            src="./content/wiselizardslogo.webp"
+            alt="Wiselizards Studio Logo"
+            class="h-10 md:h-12 w-auto"
+          />
+        </div>
+
+        <button id="mobile-menu-btn" class="md:hidden interactive z-50">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16m-7 6h7"
+            />
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <div
+      id="mobile-nav"
+      class="md:hidden fixed top-0 right-0 h-full w-full bg-white/80 backdrop-blur-lg z-40 transform translate-x-full flex items-center justify-center"
+    ></div>
+
+    <main>
+      <!-- Hero Section -->
+      <section
+        class="relative min-h-screen flex items-center justify-center text-center overflow-hidden"
+      >
+        <canvas id="hero-canvas"></canvas>
+        <div class="container mx-auto px-6 z-10">
+          <h1
+            class="text-5xl md:text-8xl font-black mb-4 reveal animated-gradient-text"
+          >
+            WISELIZARDS STUDIO
+          </h1>
+          <p
+            class="text-xl md:text-2xl mb-8 reveal"
+            style="transition-delay: 200ms"
+          >
+            Crafting the unexplored realms of Web3 gaming.
+          </p>
+          <a
+            href="#games"
+            class="interactive bg-[#10B981] text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-[#36D399] transition-all duration-300 transform hover:scale-105 reveal"
+            style="transition-delay: 400ms"
+          >
+            Explore Our Games
+          </a>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section id="about" class="py-20 md:py-32">
+        <div class="container mx-auto px-6 text-center">
+          <h2 class="text-4xl md:text-5xl font-bold mb-6 reveal">
+            We Build Worlds on the Blockchain.
+          </h2>
+          <div class="max-w-3xl mx-auto">
+            <p
+              class="text-lg text-gray-700 leading-relaxed reveal"
+              style="transition-delay: 200ms"
+            >
+              WISELLIZARDS STUDIO is a passionate collective of developers,
+              designers, and storytellers dedicated to pushing the boundaries of
+              Web3 gaming. We believe in player ownership, transparent
+              economies, and creating unforgettable experiences that are built
+              to last.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Games Section -->
+      <section
+        id="games"
+        class="py-20 md:py-32 bg-white rounded-3xl mx-4"
+        style="perspective: 1000px"
+      >
+        <div class="container mx-auto px-6">
+          <div class="text-center mb-12">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4 reveal">
+              Currently in Development
+            </h2>
+            <p
+              class="text-lg text-gray-600 reveal"
+              style="transition-delay: 200ms"
+            >
+              The first of many adventures.
+            </p>
+          </div>
+          <div
+            class="card-3d-effect flex flex-col md:flex-row items-center bg-[#F9FFF8] rounded-2xl shadow-lg overflow-hidden p-8 md:p-12 reveal"
+            style="transition-delay: 400ms"
+          >
+            <div class="md:w-1/2 mb-8 md:mb-0 md:pr-12">
+              <span
+                class="text-sm font-bold text-[#10B981] tracking-widest uppercase"
+                >SIMULATION / STRATEGY</span
+              >
+              <h3 class="text-5xl font-extrabold my-4">Founder Simulator</h3>
+              <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                Founder Simulator is a free-to-play 3D multiplayer simulation
+                strategy game where players become founders, creating, managing,
+                and scaling their NFT collection through strategic gameplay,
+                idle mechanics, and active gameplay including fun minigames.
+              </p>
+              <button
+                class="interactive bg-transparent border-2 border-[#10B981] text-[#10B981] font-bold py-3 px-8 rounded-lg hover:bg-[#10B981] hover:text-white transition-all duration-300"
+              >
+                Coming Soon
+              </button>
+            </div>
+            <div class="md:w-1/2">
+              <img
+                src="./content/foundersimlogo.png"
+                alt="Founder Simulator Game"
+                class="rounded-xl shadow-2xl w-full h-auto transform hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section / Footer -->
+      <footer id="contact" class="py-20 md:py-32 mt-20 text-center">
+        <div class="container mx-auto px-6">
+          <h2 class="text-4xl md:text-5xl font-bold mb-4 reveal">
+            Join Our Community
+          </h2>
+          <p
+            class="text-lg text-gray-700 mb-8 reveal"
+            style="transition-delay: 200ms"
+          >
+            Follow our journey and get the latest updates.
+          </p>
+          <div
+            class="flex justify-center space-x-6 mb-12 reveal"
+            style="transition-delay: 400ms"
+          >
+            <a
+              href="#"
+              class="interactive transform hover:scale-125 transition-transform"
+            >
+              <svg
+                class="w-10 h-10 text-[#1A2E1C] hover:text-[#10B981]"
+                role="img"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <title>X</title>
+                <path
+                  d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.931ZM17.61 20.644h2.039L6.486 3.24H4.298Z"
+                />
+              </svg>
+            </a>
+            <a
+              href="https://x.com/simfounder"
+              class="interactive transform hover:scale-125 transition-transform"
+            >
+            </a>
+          </div>
+          <p
+            class="text-sm text-gray-500 reveal"
+            style="transition-delay: 600ms"
+          >
+            &copy; 2025 WISELIZARDS STUDIO. All Rights Reserved.
+          </p>
+        </div>
+      </footer>
+    </main>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // --- Sticky Header ---
+        const header = document.getElementById("main-header");
+        window.addEventListener("scroll", () => {
+          if (window.scrollY > 50) {
+            header.classList.add("scrolled");
+          } else {
+            header.classList.remove("scrolled");
+          }
+        });
+
+        // --- Mobile Menu Toggle ---
+        const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+        const mobileNav = document.getElementById("mobile-nav");
+        const mobileNavLinks = document.querySelectorAll(".mobile-nav-link");
+
+        mobileMenuBtn.addEventListener("click", () => {
+          mobileNav.classList.toggle("translate-x-full");
+        });
+
+        // Close menu when a link is clicked
+        mobileNavLinks.forEach((link) => {
+          link.addEventListener("click", () => {
+            mobileNav.classList.add("translate-x-full");
+          });
+        });
+
+        // --- Custom Cursor Logic ---
+        const cursor = document.querySelector(".cursor");
+        const interactives = document.querySelectorAll(".interactive");
+
+        window.addEventListener("mousemove", (e) => {
+          cursor.style.left = e.clientX + "px";
+          cursor.style.top = e.clientY + "px";
+        });
+
+        interactives.forEach((interactive) => {
+          interactive.addEventListener("mouseenter", () => {
+            cursor.classList.add("hovered");
+          });
+          interactive.addEventListener("mouseleave", () => {
+            cursor.classList.remove("hovered");
+          });
+        });
+
+        // --- Scroll Animation Logic ---
+        const revealElements = document.querySelectorAll(".reveal");
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+              }
+            });
+          },
+          {
+            threshold: 0.1,
+          }
+        );
+
+        revealElements.forEach((el) => {
+          observer.observe(el);
+        });
+
+        // --- 3D Card Effect ---
+        const card = document.querySelector(".card-3d-effect");
+        card.addEventListener("mousemove", (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          const { width, height } = rect;
+          const rotateX = (y / height - 0.5) * -15; // 15 degrees max rotation
+          const rotateY = (x / width - 0.5) * 15;
+
+          card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+        });
+        card.addEventListener("mouseleave", () => {
+          card.style.transform = "rotateX(0deg) rotateY(0deg) scale(1)";
+        });
+
+        // --- Hero Canvas Background Effect ---
+        const canvas = document.getElementById("hero-canvas");
+        const ctx = canvas.getContext("2d");
+        let particlesArray;
+
+        let mouse = {
+          x: null,
+          y: null,
+          radius: (canvas.height / 100) * (canvas.width / 100),
+        };
+
+        window.addEventListener("mousemove", (event) => {
+          mouse.x = event.clientX;
+          mouse.y = event.clientY;
+        });
+
+        function setCanvasSize() {
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
+          mouse.radius = (canvas.height / 100) * (canvas.width / 100);
+        }
+        setCanvasSize();
+
+        class Particle {
+          constructor(x, y, directionX, directionY, size, color) {
+            this.x = x;
+            this.y = y;
+            this.directionX = directionX;
+            this.directionY = directionY;
+            this.size = size;
+            this.color = color;
+            this.baseX = this.x;
+            this.baseY = this.y;
+            this.density = Math.random() * 30 + 1;
+          }
+
+          draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+            ctx.fillStyle = this.color;
+            ctx.fill();
+          }
+
+          update() {
+            let dx = mouse.x - this.x;
+            let dy = mouse.y - this.y;
+            let distance = Math.sqrt(dx * dx + dy * dy);
+            let forceDirectionX = dx / distance;
+            let forceDirectionY = dy / distance;
+            let maxDistance = mouse.radius;
+            let force = (maxDistance - distance) / maxDistance;
+            let directionX = forceDirectionX * force * this.density;
+            let directionY = forceDirectionY * force * this.density;
+
+            if (distance < mouse.radius) {
+              this.x -= directionX;
+              this.y -= directionY;
+            } else {
+              if (this.x !== this.baseX) {
+                let dx = this.x - this.baseX;
+                this.x -= dx / 10;
+              }
+              if (this.y !== this.baseY) {
+                let dy = this.y - this.baseY;
+                this.y -= dy / 10;
+              }
+            }
+
+            if (this.x > canvas.width || this.x < 0) {
+              this.directionX = -this.directionX;
+            }
+            if (this.y > canvas.height || this.y < 0) {
+              this.directionY = -this.directionY;
+            }
+            // this.x += this.directionX;
+            // this.y += this.directionY;
+            this.draw();
+          }
+        }
+
+        function init() {
+          particlesArray = [];
+          let numberOfParticles = (canvas.height * canvas.width) / 15000;
+          for (let i = 0; i < numberOfParticles; i++) {
+            let size = Math.random() * 3 + 1;
+            let x =
+              Math.random() * (innerWidth - size * 2 - size * 2) + size * 2;
+            let y =
+              Math.random() * (innerHeight - size * 2 - size * 2) + size * 2;
+            let directionX = Math.random() * 0.2 - 0.1;
+            let directionY = Math.random() * 0.2 - 0.1;
+            let color = "rgba(54, 211, 153, 0.3)";
+
+            particlesArray.push(
+              new Particle(x, y, directionX, directionY, size, color)
+            );
+          }
+        }
+
+        function animate() {
+          requestAnimationFrame(animate);
+          ctx.clearRect(0, 0, innerWidth, innerHeight);
+
+          for (let i = 0; i < particlesArray.length; i++) {
+            particlesArray[i].update();
+          }
+        }
+
+        init();
+        animate();
+
+        window.addEventListener("resize", () => {
+          setCanvasSize();
+          init();
+        });
+        // remove mouse position when it leaves the window
+        window.addEventListener("mouseout", () => {
+          mouse.x = undefined;
+          mouse.y = undefined;
+        });
+      });
+    </script>
+  </body>
+</html>
