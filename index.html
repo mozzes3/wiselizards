@@ -116,11 +116,6 @@
         transform-style: preserve-3d;
         transition: transform 0.5s ease;
       }
-
-      /* Mobile Nav */
-      #mobile-nav {
-        transition: transform 0.3s ease-in-out;
-      }
     </style>
   </head>
   <body class="antialiased">
@@ -130,35 +125,13 @@
       <div class="container mx-auto flex justify-between items-center">
         <div class="flex items-center">
           <img
-            src="./wiselizardslogo.webp"
+            src="./wiselizardswebsite.png"
             alt="Wiselizards Studio Logo"
             class="h-10 md:h-12 w-auto"
           />
         </div>
-
-        <button id="mobile-menu-btn" class="md:hidden interactive z-50">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 6h16M4 12h16m-7 6h7"
-            />
-          </svg>
-        </button>
       </div>
     </header>
-
-    <div
-      id="mobile-nav"
-      class="md:hidden fixed top-0 right-0 h-full w-full bg-white/80 backdrop-blur-lg z-40 transform translate-x-full flex items-center justify-center"
-    ></div>
 
     <main>
       <section
@@ -177,129 +150,90 @@
           >
             Crafting the unexplored realms of Web3.
           </p>
-          <a
-            href="#games"
-            class="interactive bg-[#10B981] text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-[#36D399] transition-all duration-300 transform hover:scale-105 reveal"
-            style="transition-delay: 400ms"
-          >
-            Explore Our Games
-          </a>
-        </div>
-      </section>
-
-      <section id="about" class="py-20 md:py-32">
-        <div class="container mx-auto px-6 text-center">
-          <h2 class="text-4xl md:text-5xl font-bold mb-6 reveal">
-            We Build Worlds on the Blockchain.
-          </h2>
-          <div class="max-w-3xl mx-auto">
-            <p
-              class="text-lg text-gray-700 leading-relaxed reveal"
-              style="transition-delay: 200ms"
-            >
-              WISELIZARDS STUDIO is a passionate collective of developers,
-              designers, and storytellers dedicated to pushing the boundaries of
-              Web3 gaming. We believe in player ownership, transparent
-              economies, and creating unforgettable experiences that are built
-              to last.
-            </p>
-          </div>
         </div>
       </section>
 
       <section
-        id="games"
-        class="py-20 md:py-32 bg-white rounded-3xl mx-4"
+        class="py-20 md:py-32 bg-gray-900 rounded-3xl mx-4 my-20"
         style="perspective: 1000px"
       >
         <div class="container mx-auto px-6">
           <div class="text-center mb-12">
-            <h2 class="text-4xl md:text-5xl font-bold mb-4 reveal">
+            <h2
+              class="text-4xl md:text-5xl font-bold mb-4 text-gray-100 reveal"
+            >
               Currently in Development
             </h2>
             <p
-              class="text-lg text-gray-600 reveal"
+              class="text-lg text-gray-400 reveal"
               style="transition-delay: 200ms"
             >
-              The first of many adventures.
+              Our projects in the pipeline.
             </p>
           </div>
-          <div
-            class="card-3d-effect flex flex-col md:flex-row items-center bg-[#F9FFF8] rounded-2xl shadow-lg overflow-hidden p-8 md:p-12 reveal"
-            style="transition-delay: 400ms"
-          >
-            <div class="md:w-1/2 mb-8 md:mb-0 md:pr-12">
-              <span
-                class="text-sm font-bold text-[#10B981] tracking-widest uppercase"
-                >SIMULATION / STRATEGY</span
-              >
-              <h3 class="text-5xl font-extrabold my-4">Founder Simulator</h3>
-              <p class="text-lg text-gray-700 leading-relaxed mb-6">
-                Founder Simulator is a free-to-play 3D multiplayer simulation
-                strategy game where players become founders, creating, managing,
-                and scaling their NFT collection through strategic gameplay,
-                idle mechanics, and active gameplay including fun minigames.
-              </p>
-              <button
-                class="interactive bg-transparent border-2 border-[#10B981] text-[#10B981] font-bold py-3 px-8 rounded-lg hover:bg-[#10B981] hover:text-white transition-all duration-300"
-              >
-                Coming Soon
-              </button>
-            </div>
-            <div class="md:w-1/2">
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+            <div
+              class="card-3d-effect flex flex-col bg-[#F9FFF8] rounded-2xl shadow-lg overflow-hidden p-8 reveal"
+              style="transition-delay: 400ms"
+            >
               <img
                 src="./foundersimlogo.png"
                 alt="Founder Simulator Game"
-                class="rounded-xl shadow-2xl w-full h-auto transform hover:scale-105 transition-transform duration-500"
+                class="rounded-xl shadow-2xl w-full h-auto mb-8 transform hover:scale-105 transition-transform duration-500"
               />
+              <div>
+                <span
+                  class="text-sm font-bold text-[#10B981] tracking-widest uppercase"
+                  >SIMULATION / STRATEGY</span
+                >
+                <h3 class="text-4xl font-extrabold my-4">Founder Simulator</h3>
+                <p class="text-base text-gray-700 leading-relaxed mb-6">
+                  Founder Simulator is a free-to-play 3D multiplayer simulation
+                  strategy game where players become founders, creating,
+                  managing, and scaling their NFT collection through strategic
+                  gameplay, idle mechanics, and active gameplay including fun
+                  minigames.
+                </p>
+                <button
+                  class="interactive bg-transparent border-2 border-[#10B981] text-[#10B981] font-bold py-3 px-8 rounded-lg hover:bg-[#10B981] hover:text-white transition-all duration-300"
+                >
+                  Coming Soon
+                </button>
+              </div>
+            </div>
+
+            <div
+              class="card-3d-effect flex flex-col bg-[#F9FFF8] rounded-2xl shadow-lg overflow-hidden p-8 reveal"
+              style="transition-delay: 600ms"
+            >
+              <img
+                src="./wiselizards2.png"
+                alt="Lizard Academy Logo"
+                class="rounded-xl shadow-2xl w-full h-auto mb-8 transform hover:scale-105 transition-transform duration-500"
+              />
+              <div>
+                <span
+                  class="text-sm font-bold text-[#10B981] tracking-widest uppercase"
+                  >EDUCATION / WEB3</span
+                >
+                <h3 class="text-4xl font-extrabold my-4">Lizard Academy</h3>
+                <p class="text-base text-gray-700 leading-relaxed mb-6">
+                  An interactive learning platform dedicated to Web3. Master
+                  blockchain concepts, develop smart contracts, and earn
+                  on-chain certificates to showcase your skills and build your
+                  decentralized career.
+                </p>
+                <button
+                  class="interactive bg-transparent border-2 border-[#10B981] text-[#10B981] font-bold py-3 px-8 rounded-lg hover:bg-[#10B981] hover:text-white transition-all duration-300"
+                >
+                  Coming Soon
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </section>
-
-      <footer id="contact" class="py-20 md:py-32 mt-20 text-center">
-        <div class="container mx-auto px-6">
-          <h2 class="text-4xl md:text-5xl font-bold mb-4 reveal">
-            Join Our Community
-          </h2>
-          <p
-            class="text-lg text-gray-700 mb-8 reveal"
-            style="transition-delay: 200ms"
-          >
-            Follow our journey and get the latest updates.
-          </p>
-          <div
-            class="flex justify-center space-x-6 mb-12 reveal"
-            style="transition-delay: 400ms"
-          >
-            <a
-              href="https://x.com/simfounder"
-              class="interactive transform hover:scale-125 transition-transform"
-            >
-              <svg
-                class="w-10 h-10 text-[#1A2E1C] hover:text-[#10B981]"
-                role="img"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <title>X</title>
-                <path
-                  d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.931ZM17.61 20.644h2.039L6.486 3.24H4.298Z"
-                />
-              </svg>
-            </a>
-          </div>
-          <div
-            class="text-sm text-gray-500 reveal"
-            style="transition-delay: 600ms"
-          >
-            <p>&copy; 2025 WISELIZARDS STUDIO. All Rights Reserved.</p>
-            <p class="mt-4">
-              'Founder Simulator ^ Lizard Academy' is a trading name of WISELIZARDS STUDIO.
-            </p>
-          </div>
-        </div>
-      </footer>
     </main>
 
     <script>
@@ -312,22 +246,6 @@
           } else {
             header.classList.remove("scrolled");
           }
-        });
-
-        // --- Mobile Menu Toggle ---
-        const mobileMenuBtn = document.getElementById("mobile-menu-btn");
-        const mobileNav = document.getElementById("mobile-nav");
-        const mobileNavLinks = document.querySelectorAll(".mobile-nav-link");
-
-        mobileMenuBtn.addEventListener("click", () => {
-          mobileNav.classList.toggle("translate-x-full");
-        });
-
-        // Close menu when a link is clicked
-        mobileNavLinks.forEach((link) => {
-          link.addEventListener("click", () => {
-            mobileNav.classList.add("translate-x-full");
-          });
         });
 
         // --- Custom Cursor Logic ---
@@ -367,20 +285,22 @@
           observer.observe(el);
         });
 
-        // --- 3D Card Effect ---
-        const card = document.querySelector(".card-3d-effect");
-        card.addEventListener("mousemove", (e) => {
-          const rect = card.getBoundingClientRect();
-          const x = e.clientX - rect.left;
-          const y = e.clientY - rect.top;
-          const { width, height } = rect;
-          const rotateX = (y / height - 0.5) * -15; // 15 degrees max rotation
-          const rotateY = (x / width - 0.5) * 15;
+        // --- 3D Card Effect (Updated to support multiple cards) ---
+        const cards = document.querySelectorAll(".card-3d-effect");
+        cards.forEach((card) => {
+          card.addEventListener("mousemove", (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const { width, height } = rect;
+            const rotateX = (y / height - 0.5) * -10; // Reduced rotation for smaller cards
+            const rotateY = (x / width - 0.5) * 10;
 
-          card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
-        });
-        card.addEventListener("mouseleave", () => {
-          card.style.transform = "rotateX(0deg) rotateY(0deg) scale(1)";
+            card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
+          });
+          card.addEventListener("mouseleave", () => {
+            card.style.transform = "rotateX(0deg) rotateY(0deg) scale(1)";
+          });
         });
 
         // --- Hero Canvas Background Effect ---
@@ -507,4 +427,3 @@
     </script>
   </body>
 </html>
-
